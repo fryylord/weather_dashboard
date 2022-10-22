@@ -53,8 +53,15 @@ $().ready(function () {
           $('#current-weather').append($('<p>').text('Temperature: ' + data.main.temp + '°').addClass('card-text'));
           $('#current-weather').append($('<p>').text('Humidity: ' + data.main.humidity + '%').addClass('card-text'));
           $('#current-weather').append($('<p>').text('Wind Speed: ' + data.wind.speed + 'MPH').addClass('card-text'));
+
+          var iconURL = 'https://openweathermap.org/img/wn/' + data.weather[0].icon + '@2x.png';
+          var iconElement = $('<img>').attr('src', iconURL)
+          iconElement.attr('alt', data.weather[0].description);
+          $('#current-weather').append(iconElement);
       })
   }
+
+
 
   searchButton.on('click', function (e) {
       e.preventDefault();

@@ -1,5 +1,9 @@
 const apiKey = '7513e3f067ff846492d0f20633a62466'
 var timeDisplayEl = $('#dayTime');
+var searchText = $('#searchText');
+var searchButton = $('#searchButton');
+var citiesList = $('#cities-list');
+var clearFieldsBtn = $('#clearButton');
     
 function displayTime() {
   var rightNow = moment().format('hh:mm:ss a [on] MMM DD, YYYY ');
@@ -7,26 +11,20 @@ function displayTime() {
   }
   setInterval(displayTime, 1000);
 
-$().ready(function () {
-
-  if (localStorage.getItem('cityHist') === null) {
+if (localStorage.getItem('cityHist') === null) {
       var localData = { cities: [] };
       localStorage.setItem('cityHist', JSON.stringify(localData));
-  } else {
+    } 
+      else {
       localData = JSON.parse(localStorage.getItem('cityHist'));
-  }
+    }
 
-  var searchText = $('#searchText');
-  var searchButton = $('#searchButton');
-  var citiesList = $('#cities-list');
-  var clearFieldsBtn = $('#clearButton');
-
-  function insertToLocal(city) {
-      if (localData.cities.includes(city) === false) {
-          localData.cities.push(city);
-          localStorage.setItem('cityHist', JSON.stringify(localData));
-      }
-  }
+function insertToLocal(city) {
+    if (localData.cities.includes(city) === false) {
+        localData.cities.push(city);
+        localStorage.setItem('cityHist', JSON.stringify(localData));
+    }
+}
 
   function displayRecentCities() {
       citiesList.empty();
@@ -111,5 +109,5 @@ $().ready(function () {
     refreshPage();
   })
 
-  displayRecentCities();})
+  displayRecentCities();
   

@@ -9,11 +9,11 @@ function displayTime() {
 
 $().ready(function () {
 
-  if (localStorage.getItem('WeatherHistory') === null) {
+  if (localStorage.getItem('cityHist') === null) {
       var localData = { cities: [] };
-      localStorage.setItem('WeatherHistory', JSON.stringify(localData));
+      localStorage.setItem('cityHist', JSON.stringify(localData));
   } else {
-      localData = JSON.parse(localStorage.getItem('WeatherHistory'));
+      localData = JSON.parse(localStorage.getItem('cityHist'));
   }
 
   var searchText = $('#searchText');
@@ -24,7 +24,7 @@ $().ready(function () {
   function insertToLocal(city) {
       if (localData.cities.includes(city) === false) {
           localData.cities.push(city);
-          localStorage.setItem('WeatherHistory', JSON.stringify(localData));
+          localStorage.setItem('cityHist', JSON.stringify(localData));
       }
   }
 

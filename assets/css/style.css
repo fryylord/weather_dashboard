@@ -1,7 +1,7 @@
-/* .container {
-    float: left;
-    width: 30%;
-    margin: 0px;
+.container {
+    align-self: center;
+    width: 100%;
+    margin: auto;
     background-color: #9cfc98;
     padding-bottom: 170px;
   }
@@ -14,10 +14,10 @@
     color:#000000;
   }
   
-ul .list-group {
+ul {
     width: 50%;
-    margin: 100px;
-    float: left;
+    margin: auto;
+    text-align: center;
   }
 
 h1 {
@@ -34,4 +34,4 @@ h2 {
      color: #000000;
      margin: 0px, 0px, 20px, 0px;
      margin-left: 0cm;
-   } */
+   }

@@ -75,7 +75,7 @@ function callAPI(city) {
                 var cityMain = $('<div>');
                 cityMain.addClass('col bg-primary text-white ml-3 mb-3 rounded>');
                 var date5 = $("<h5>").text(response.list[i].dt_txt.split(" ")[0]);
-                var image = $('<img>').attr('src', 'http://openweathermap.org/img/w/' + arrayList[i].weather[0].icon + '.png');
+                var image = $('<img>').attr('src', 'https://openweathermap.org/img/w/' + arrayList[i].weather[0].icon + '.png');
                 var degreeMain = $('<p>').text('Temp : ' + arrayList[i].main.temp + ' °F ');               
                 var humidityMain = $('<p>').text('Humidity : ' + arrayList[i].main.humidity + '%');
                 var windMain = $('<p>').text('Wind Speed : ' + arrayList[i].wind.speed + 'MPH');                

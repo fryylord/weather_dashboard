@@ -41,14 +41,6 @@ $().ready(function () {
       });
   }
 
-  function getFormatedDate(){
-      var date = new Date();
-      var day = date.getDate();
-      var month = date.getMonth() + 1;
-      var year = date.getFullYear();
-      return `(${month}/${day}/${year})`;
-  }
-
   function callAPI(city) {
       var apiKey = '16265bff2120f2467d9ec41ab15065e7';
       var urlQuery = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apiKey + '&units=imperial';
@@ -57,7 +49,7 @@ $().ready(function () {
           method: 'GET'
       }).then(function (data) {
           $('#current-weather').empty();
-          $('#current-weather').append($('<h2>').text(data.name + ' ' + getFormatedDate()).addClass('card-title'));
+          $('#current-weather').append($('<h2>').text(data.name + ' ').addClass('card-title'));
           $('#current-weather').append($('<p>').text('Temperature: ' + data.main.temp + '°').addClass('card-text'));
           $('#current-weather').append($('<p>').text('Humidity: ' + data.main.humidity + '%').addClass('card-text'));
           $('#current-weather').append($('<p>').text('Wind Speed: ' + data.wind.speed + 'MPH').addClass('card-text'));

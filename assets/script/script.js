@@ -16,8 +16,8 @@ $().ready(function () {
       saveLocal = JSON.parse(localStorage.getItem('WeatherHistory'));
   }
 
-  var searchInput = $('#search-input');
-  var searchBtn = $('#search-btn');
+  var searchText = $('#searchText');
+  var searchButton = $('#searchButton');
   var citiesList = $('#cities-list');
 
   function insertToLocal(city) {
@@ -55,11 +55,11 @@ $().ready(function () {
       })
   }
 
-  searchBtn.on('click', function (e) {
+  searchButton.on('click', function (e) {
       e.preventDefault();
-      var city = searchInput.val();
-      insertToLocal(searchInput.val());
-      searchInput.val('');
+      var city = searchText.val();
+      insertToLocal(searchText.val());
+      searchText.val('');
       displayRecentCities();
       callAPI(city);
   });

@@ -43,9 +43,9 @@ $().ready(function () {
   }
 
   function callAPI(city) {
-      var urlQuery = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apiKey + '&units=imperial';
+      var urlCall = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apiKey + '&units=imperial';
       $.ajax({
-          url: urlQuery,
+          url: urlCall,
           method: 'GET'
       }).then(function (data) {
           $('#current-weather').empty();
@@ -60,8 +60,6 @@ $().ready(function () {
           $('#current-weather').append(iconElement);
       })
   }
-
-
 
   searchButton.on('click', function (e) {
       e.preventDefault();

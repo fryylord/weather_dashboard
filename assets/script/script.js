@@ -72,7 +72,6 @@ function callAPI(city) {
         var arrayList = response.list;
         for (var i = 0; i < arrayList.length; i++) {
             if (arrayList[i].dt_txt.split(' ')[1] === '12:00:00') {
-                console.log(arrayList[i]);
                 var cityMain = $('<div>');
                 cityMain.addClass('col bg-primary text-white ml-3 mb-3 rounded>');
                 var date5 = $("<h5>").text(response.list[i].dt_txt.split(" ")[0]);

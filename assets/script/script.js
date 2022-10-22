@@ -49,7 +49,7 @@ $().ready(function () {
           method: 'GET'
       }).then(function (data) {
           $('#current-weather').empty();
-          $('#current-weather').append($('<h2>').text(data.name + ' ').addClass('card-title'));
+          $('#current-weather').append($('<h3>').text(data.name + ' ').addClass('card-title'));
           $('#current-weather').append($('<p>').text('Temperature: ' + data.main.temp + '°').addClass('card-text'));
           $('#current-weather').append($('<p>').text('Humidity: ' + data.main.humidity + '%').addClass('card-text'));
           $('#current-weather').append($('<p>').text('Wind Speed: ' + data.wind.speed + 'MPH').addClass('card-text'));

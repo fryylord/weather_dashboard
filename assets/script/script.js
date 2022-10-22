@@ -75,13 +75,13 @@ function insertToLocal(city) {
             if (arrayList[i].dt_txt.split(' ')[1] === '12:00:00') {
                 console.log(arrayList[i]);
                 var cityMain = $('<div>');
-                cityMain.addClass('col forecast bg-primary text-white ml-3 mb-3 rounded>');
+                cityMain.addClass('col bg-primary text-white ml-3 mb-3 rounded>');
                 var date5 = $("<h5>").text(response.list[i].dt_txt.split(" ")[0]);
                 var image = $('<img>').attr('src', 'http://openweathermap.org/img/w/' + arrayList[i].weather[0].icon + '.png');
                 var degreeMain = $('<p>').text('Temp : ' + arrayList[i].main.temp + ' °F ');               
                 var humidityMain = $('<p>').text('Humidity : ' + arrayList[i].main.humidity + '%');
                 var windMain = $('<p>').text('Wind Speed : ' + arrayList[i].wind.speed + 'MPH');                
-                cityMain.append(date5).append(image).append(degreeMain).append(humidityMain).append(windMain);
+                cityMain.append(date5).append(degreeMain).append(humidityMain).append(windMain).append(image);
                 $('#fiveDay').append(cityMain);
             }
         }

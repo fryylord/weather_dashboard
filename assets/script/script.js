@@ -42,7 +42,6 @@ $().ready(function () {
   }
 
   function callAPI(city) {
-      var apiKey = '16265bff2120f2467d9ec41ab15065e7';
       var urlQuery = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apiKey + '&units=imperial';
       $.ajax({
           url: urlQuery,

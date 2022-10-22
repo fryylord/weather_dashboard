@@ -2,9 +2,13 @@
     align-self: center;
     width: 100%;
     margin: auto;
-    background-color: #9cfc98;
+    background-color: #ffffff;
     padding-bottom: 170px;
   }
+
+header {
+  background-color: #711bfd;
+}
   
 ul {
     width: 50%;
@@ -47,5 +51,5 @@ h2 {
 
 .weatherCard {
   text-align: center;
-  background-color: #9cfc98;
+  background-color: #ffffff;
 }

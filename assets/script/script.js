@@ -9,11 +9,11 @@ function displayTime() {
 
 $().ready(function () {
 
-  if (localStorage.getItem('history') === null) {
-      var cityHist = { cities: [] };
-      localStorage.setItem('history', JSON.stringify(cityHist));
+  if (localStorage.getItem('WeatherHistory') === null) {
+      var saveLocal = { cities: [] };
+      localStorage.setItem('WeatherHistory', JSON.stringify(saveLocal));
   } else {
-      cityHist = JSON.parse(localStorage.getItem('history'));
+      saveLocal = JSON.parse(localStorage.getItem('WeatherHistory'));
   }
 
   var searchInput = $('#search-input');
@@ -21,15 +21,15 @@ $().ready(function () {
   var citiesList = $('#cities-list');
 
   function insertToLocal(city) {
-      if (cityHist.cities.includes(city) === false) {
-          cityHist.cities.push(city);
-          localStorage.setItem('history', JSON.stringify(cityHist));
+      if (saveLocal.cities.includes(city) === false) {
+          saveLocal.cities.push(city);
+          localStorage.setItem('WeatherHistory', JSON.stringify(saveLocal));
       }
   }
 
-  function recentCities() {
+  function displayRecentCities() {
       citiesList.empty();
-      cityHist.cities.forEach(element => {
+      saveLocal.cities.forEach(element => {
           var currentCity = $('<div>').text(element);
           currentCity.addClass(['list-group-item', 'list-group-item-action', 'recent-city']);
           currentCity.attr('data-city', element);
@@ -50,19 +50,19 @@ $().ready(function () {
   }
 
   function callAPI(city) {
+      var apiKey = '16265bff2120f2467d9ec41ab15065e7';
       var urlQuery = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apiKey + '&units=imperial';
       $.ajax({
           url: urlQuery,
           method: 'GET'
       }).then(function (data) {
           $('#current-weather').empty();
-          $('#current-weather').append($('<h3>').text(data.name + ' ' + getFormatedDate()).addClass('card-title'));     
+          $('#current-weather').append($('<h2>').text(data.name + ' ' + getFormatedDate()).addClass('card-title'));
           $('#current-weather').append($('<p>').text('Temperature: ' + data.main.temp + '°').addClass('card-text'));
           $('#current-weather').append($('<p>').text('Humidity: ' + data.main.humidity + '%').addClass('card-text'));
           $('#current-weather').append($('<p>').text('Wind Speed: ' + data.wind.speed + 'MPH').addClass('card-text'));
       })
   }
-
 
   searchBtn.on('click', function (e) {
       e.preventDefault();
@@ -73,5 +73,5 @@ $().ready(function () {
       callAPI(city);
   });
 
-  recentCities();
+  displayRecentCities();
 });

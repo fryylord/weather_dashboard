@@ -10,26 +10,27 @@ function displayTime() {
 $().ready(function () {
 
   if (localStorage.getItem('WeatherHistory') === null) {
-      var saveLocal = { cities: [] };
-      localStorage.setItem('WeatherHistory', JSON.stringify(saveLocal));
+      var localData = { cities: [] };
+      localStorage.setItem('WeatherHistory', JSON.stringify(localData));
   } else {
-      saveLocal = JSON.parse(localStorage.getItem('WeatherHistory'));
+      localData = JSON.parse(localStorage.getItem('WeatherHistory'));
   }
 
   var searchText = $('#searchText');
   var searchButton = $('#searchButton');
   var citiesList = $('#cities-list');
+  var clearFieldsBtn = $('#clearButton');
 
   function insertToLocal(city) {
-      if (saveLocal.cities.includes(city) === false) {
-          saveLocal.cities.push(city);
-          localStorage.setItem('WeatherHistory', JSON.stringify(saveLocal));
+      if (localData.cities.includes(city) === false) {
+          localData.cities.push(city);
+          localStorage.setItem('WeatherHistory', JSON.stringify(localData));
       }
   }
 
   function displayRecentCities() {
       citiesList.empty();
-      saveLocal.cities.forEach(element => {
+      localData.cities.forEach(element => {
           var currentCity = $('<div>').text(element);
           currentCity.addClass(['list-group-item', 'list-group-item-action', 'recent-city']);
           currentCity.attr('data-city', element);
@@ -64,5 +65,15 @@ $().ready(function () {
       callAPI(city);
   });
 
-  displayRecentCities();
-});
+  function refreshPage(){
+    window.location.reload();
+  } 
+
+  clearFieldsBtn.on('click', function (e) {
+    e.preventDefault();
+    localStorage.clear();
+    displayRecentCities();
+    refreshPage();
+  })
+
+  displayRecentCities();})

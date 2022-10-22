@@ -9,11 +9,11 @@ function displayTime() {
 
 $().ready(function () {
 
-  if (localStorage.getItem('WeatherHistory') === null) {
-      var weatherHistory = { cities: [] };
-      localStorage.setItem('WeatherHistory', JSON.stringify(weatherHistory));
+  if (localStorage.getItem('history') === null) {
+      var cityHist = { cities: [] };
+      localStorage.setItem('history', JSON.stringify(cityHist));
   } else {
-      weatherHistory = JSON.parse(localStorage.getItem('WeatherHistory'));
+      cityHist = JSON.parse(localStorage.getItem('history'));
   }
 
   var searchInput = $('#search-input');
@@ -21,15 +21,15 @@ $().ready(function () {
   var citiesList = $('#cities-list');
 
   function insertToLocal(city) {
-      if (weatherHistory.cities.includes(city) === false) {
-          weatherHistory.cities.push(city);
-          localStorage.setItem('WeatherHistory', JSON.stringify(weatherHistory));
+      if (cityHist.cities.includes(city) === false) {
+          cityHist.cities.push(city);
+          localStorage.setItem('history', JSON.stringify(cityHist));
       }
   }
 
-  function displayRecentCities() {
+  function recentCities() {
       citiesList.empty();
-      weatherHistory.cities.forEach(element => {
+      cityHist.cities.forEach(element => {
           var currentCity = $('<div>').text(element);
           currentCity.addClass(['list-group-item', 'list-group-item-action', 'recent-city']);
           currentCity.attr('data-city', element);
@@ -56,15 +56,7 @@ $().ready(function () {
           method: 'GET'
       }).then(function (data) {
           $('#current-weather').empty();
-          $('#current-weather').append($('<h2>').text(data.name + ' ' + getFormatedDate()).addClass('card-title').css('display', 'inline') );
-          
-          var iconURL = 'https://openweathermap.org/img/wn/' + data.weather[0].icon + '@2x.png';
-          
-          var iconElement = $('<img>').attr('src', iconURL).css('display', 'inline');
-          iconElement.css('margin-left', '1rem');
-          iconElement.attr('alt', data.weather[0].description);
-          $('#current-weather').append(iconElement);
-
+          $('#current-weather').append($('<h3>').text(data.name + ' ' + getFormatedDate()).addClass('card-title'));     
           $('#current-weather').append($('<p>').text('Temperature: ' + data.main.temp + '°').addClass('card-text'));
           $('#current-weather').append($('<p>').text('Humidity: ' + data.main.humidity + '%').addClass('card-text'));
           $('#current-weather').append($('<p>').text('Wind Speed: ' + data.wind.speed + 'MPH').addClass('card-text'));
@@ -81,5 +73,5 @@ $().ready(function () {
       callAPI(city);
   });
 
-  displayRecentCities();
+  recentCities();
 });

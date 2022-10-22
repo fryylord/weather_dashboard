@@ -35,3 +35,7 @@ h2 {
      margin: 0px, 0px, 20px, 0px;
      margin-left: 0cm;
    }
+
+.card-title {
+  display: inline;
+}

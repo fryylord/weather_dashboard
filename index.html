@@ -30,17 +30,34 @@
         
     <div class="container">
       <div class="row">
-        <p id="citySearch">Search for a City:</p>
-        <div class="row form-group form-inline">
-           <input type="text" placeholder="City Name" class="form-control"/>
-           <button id="submit" class="btn btn-primary">Search</button>
-        </div>
+          <aside class="col-3">
+              <form>
+                  <div class="mb-3">
+                      <label for="search-input" class="form-label">Search for a City:</label>
+                      <div class="input-group">
+                          <input type="text" name="search-input" id="search-input" class="form-control">
+                          <input type="submit" value="Search" class="btn btn-primary" id="search-btn">
+                      </div>
+                  </div>
+              </form>
+              <div id="cities-card" class="card">
+                  <ul id="cities-list" class="list-group">
+                  </ul>
+              </div>
+          </aside>
+
+          <main class="col-9">
+              <h2>Current Weather</h2>
+              <div class="card">
+                  <div id="current-weather" class="card-body">
+                  </div>
+              </div>
+              <h2>5 Day Forecast</h2>
+              <div class="card-group" id="forecast-container">
+              </div>
+          </main>
       </div>
-    </div>
- 
-    <ul class="list-group">
-      <li class="list-group-item"></li>
-    </ul>
+  </div>
 
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

@@ -54,11 +54,11 @@ function callAPI(city) {
       $(".current-weather").empty()
       var cityMain = $("<div col-12>").append($("<p><h5>" + data.name  + "</h5><p>"));
       var image = $('<img class="imgsize">').attr('src', 'http://openweathermap.org/img/w/' + data.weather[0].icon + '.png');        
-      var degreeMain = $('<p>').text('Temperature : ' + data.main.temp + ' °F');
-      var humidityMain = $('<p>').text('Humidity : ' + data.main.humidity + '%');
-      var windMain = $('<p>').text('Wind Speed : ' + data.wind.speed + 'MPH');       
+      var cityTemp = $('<p>').text('Temperature : ' + data.main.temp + ' °F');
+      var cityHumid = $('<p>').text('Humidity : ' + data.main.humidity + '%');
+      var cityWind = $('<p>').text('Wind Speed : ' + data.wind.speed + 'MPH');       
 
-      cityMain.append(image).append(degreeMain).append(humidityMain).append(windMain);
+      cityMain.append(cityTemp).append(cityWind).append(cityHumid).append(image);
       $('#current-weather').empty();
       $('#current-weather').append(cityMain);
       
@@ -78,7 +78,7 @@ function displayForecast(lat, lon) {
             if (arrayList[i].dt_txt.split(' ')[1] === '12:00:00') {
                 var cityMain = $('<div>');
                 cityMain.addClass('col bg-primary text-white ml-3 mb-3 rounded>');
-                var fiveDayDate = $("<h5>").text(response.list[i].dt_txt.split(" ")[0]);
+                var fiveDayDate = $("<h6>").text(response.list[i].dt_txt.split(" ")[0]);
                 var cityTemp = $('<p>').text('Temp : ' + arrayList[i].main.temp + ' °F ');               
                 var cityWind = $('<p>').text('Wind Speed : ' + arrayList[i].wind.speed + 'MPH'); 
                 var cityHumid = $('<p>').text('Humidity : ' + arrayList[i].main.humidity + '%');

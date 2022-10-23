@@ -66,3 +66,8 @@ h5 {
 #current-weather{
   border: solid;
 }
+
+h6 {
+  text-align: left;
+  font-size: large;
+}

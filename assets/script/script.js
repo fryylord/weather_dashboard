@@ -29,7 +29,7 @@ function insertToLocal(city) {
 function displayRecentCities() {
   citiesList.empty();
   localData.cities.forEach(element => {
-    var currentCity = $('<div>').text(element);
+    var currentCity = $('<li>').text(element);
     currentCity.addClass(['list-group-item', 'list-group-item-action', 'recent-city']);
     currentCity.attr('data-city', element);
     citiesList.append(currentCity);

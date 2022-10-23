@@ -38,7 +38,7 @@ h2 {
 }
 
 #currentWeather{
-  text-align: center;
+  text-align: left;
 }
 
 .clear{
@@ -50,6 +50,11 @@ h2 {
 }
 
 .weatherCard {
-  text-align: center;
+  text-align: left;
   background-color: #ffffff;
+}
+
+h5 {
+  text-align: left;
+  font-size: x-large;
 }

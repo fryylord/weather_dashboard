@@ -52,7 +52,7 @@ function callAPI(city) {
   }).then(function (data) {
       console.log(data)
       $(".current-weather").empty()
-      var cityMain = $("<div col-12>").append($("<p><h2>" + data.name  + "</h2><p>"));
+      var cityMain = $("<div col-12>").append($("<p><h5>" + data.name  + "</h5><p>"));
       var image = $('<img class="imgsize">').attr('src', 'http://openweathermap.org/img/w/' + data.weather[0].icon + '.png');        
       var degreeMain = $('<p>').text('Temperature : ' + data.main.temp + ' °F');
       var humidityMain = $('<p>').text('Humidity : ' + data.main.humidity + '%');

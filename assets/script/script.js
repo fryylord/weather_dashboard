@@ -43,24 +43,28 @@ function displayRecentCities() {
 
 function callAPI(city) {
   $.ajax({
-  url: 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apiKey + '&units=imperial',
-  method: 'GET'
-    }).then(function (data) {
-      
+      url: 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apiKey + '&units=imperial',
+      method: "GET",
+      error: (err => {
+          alert("Your city was not found. Check your spelling or enter a city code")
+          return;
+        })
+  }).then(function (data) {
+      console.log(data)
+      $(".current-weather").empty()
+      var cityMain = $("<div col-12>").append($("<p><h2>" + data.name  + "</h2><p>"));
+      var image = $('<img class="imgsize">').attr('src', 'http://openweathermap.org/img/w/' + data.weather[0].icon + '.png');        
+      var degreeMain = $('<p>').text('Temperature : ' + data.main.temp + ' °F');
+      var humidityMain = $('<p>').text('Humidity : ' + data.main.humidity + '%');
+      var windMain = $('<p>').text('Wind Speed : ' + data.wind.speed + 'MPH');       
+
+      cityMain.append(image).append(degreeMain).append(humidityMain).append(windMain);
       $('#current-weather').empty();
-      $('#current-weather').append($('<h3>').text(data.name + ' ').addClass('card-title'));
-      $('#current-weather').append($('<p>').text('Temperature: ' + data.main.temp + '°').addClass('card-text'));
-      $('#current-weather').append($('<p>').text('Humidity: ' + data.main.humidity + '%').addClass('card-text'));
-      $('#current-weather').append($('<p>').text('Wind Speed: ' + data.wind.speed + 'MPH').addClass('card-text'));
+      $('#current-weather').append(cityMain);
       
       var lat = data.coord.lat;
       var lon = data.coord.lon;
       displayForecast(lat,lon);
-          
-      var iconURL = 'https://openweathermap.org/img/wn/' + data.weather[0].icon + '@2x.png';
-      var iconElement = $('<img>').attr('src', iconURL)
-      iconElement.attr('alt', data.weather[0].description);
-      $('#current-weather').append(iconElement);
       })
   }
 

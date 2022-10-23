@@ -75,11 +75,11 @@ function callAPI(city) {
                 var cityMain = $('<div>');
                 cityMain.addClass('col bg-primary text-white ml-3 mb-3 rounded>');
                 var fiveDayDate = $("<h5>").text(response.list[i].dt_txt.split(" ")[0]);
-                var degreeMain = $('<p>').text('Temp : ' + arrayList[i].main.temp + ' °F ');               
-                var windMain = $('<p>').text('Wind Speed : ' + arrayList[i].wind.speed + 'MPH'); 
-                var humidityMain = $('<p>').text('Humidity : ' + arrayList[i].main.humidity + '%');
+                var cityTemp = $('<p>').text('Temp : ' + arrayList[i].main.temp + ' °F ');               
+                var cityWind = $('<p>').text('Wind Speed : ' + arrayList[i].wind.speed + 'MPH'); 
+                var cityHumid = $('<p>').text('Humidity : ' + arrayList[i].main.humidity + '%');
                 var image = $('<img>').attr('src', 'https://openweathermap.org/img/w/' + arrayList[i].weather[0].icon + '.png');            
-                cityMain.append(fiveDayDate).append(degreeMain).append(windMain).append(humidityMain).append(image);
+                cityMain.append(fiveDayDate).append(cityTemp).append(cityWind).append(cityHumid).append(image);
                 $('#fiveDay').append(cityMain);
             }
         }

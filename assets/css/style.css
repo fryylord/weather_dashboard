@@ -58,3 +58,7 @@ h5 {
   text-align: left;
   font-size: x-large;
 }
+
+#cities-list {
+  cursor:pointer;
+}

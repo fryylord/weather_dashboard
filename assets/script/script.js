@@ -68,7 +68,7 @@ function callAPI(city) {
       })
   }
 
-  function displayForecast(lat, lon) {
+function displayForecast(lat, lon) {
     $.ajax({ 
         url: 'https://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=' + apiKey + '&units=imperial',
         method: "GET",
@@ -90,7 +90,7 @@ function callAPI(city) {
     });
 };
 
-  searchButton.on('click', function (e) {
+searchButton.on('click', function (e) {
     $('#fiveDay').empty();  
     e.preventDefault();
       var city = searchText.val();
@@ -98,18 +98,18 @@ function callAPI(city) {
       searchText.val('');
       displayRecentCities();
       callAPI(city);
-  });
+});
 
-  function refreshPage(){
+function refreshPage(){
     window.location.reload();
-  } 
+} 
 
-  clearFieldsBtn.on('click', function (e) {
+clearFieldsBtn.on('click', function (e) {
     e.preventDefault();
     localStorage.clear();
     displayRecentCities();
     refreshPage();
-  })
+})
 
-  displayRecentCities();
+displayRecentCities();
   

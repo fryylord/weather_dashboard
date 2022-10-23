@@ -62,3 +62,7 @@ h5 {
 #cities-list {
   cursor:pointer;
 }
+
+#current-weather{
+  border: solid;
+}

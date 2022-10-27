@@ -46,7 +46,7 @@ function callAPI(city) {
       url: 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apiKey + '&units=imperial',
       method: "GET",
       error: (err => {
-          alert("Your city was not found. Check your spelling or enter a city code")
+          alert("City not found")
           return;
         })
   }).then(function (data) {

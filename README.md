@@ -22,8 +22,11 @@ To allow the user to enter in a desired city, get current weather information, a
 
 ## Credits
 
-https://ku.bootcampcontent.com/ku-coding-boot-camp/KU-VIRT-FSF-PT-09-2022-U-LOLC/   
-
+https://ku.bootcampcontent.com/ku-coding-boot-camp/KU-VIRT-FSF-PT-09-2022-U-LOLC/  
+https://github.com/jrtwheeler/Weather-Dashboard/ 
+https://github.com/kheller18/weather-dashboard/
+https://github.com/jpecheverryp/weather-dashboard/
+https://github.com/vmichalecki/weather-dashboard/
 
 ## License
  
